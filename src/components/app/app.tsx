@@ -1,3 +1,4 @@
+import { SortType } from '../../const';
 import Main from '../../pages/main/main';
 import { City } from '../../types/common';
 
@@ -9,7 +10,7 @@ const tempActiveCity: City = 'Dusseldorf';
 
 function App({ numberOfOffers }: AppProps): JSX.Element {
   return (
-    <Main numberOfOffers={numberOfOffers} activeCity={tempActiveCity} />
+    <Main numberOfOffers={numberOfOffers} activeCity={tempActiveCity} currentSortType={SortType.Popular} />
   );
 }
 
