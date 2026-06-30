@@ -17,4 +17,5 @@ export const Block: Record<string, BlockName> = {
   NEAR_PLACES: 'near-places',
   OFFER: 'offer',
   PLACE_CARD: 'place-card',
+  REVIEWS: 'reviews',
 } as const;
