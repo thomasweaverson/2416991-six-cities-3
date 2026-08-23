@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Offer, User } from '../../types/offer';
 import OfferDescription from '../offer-description/offer-description';
 
@@ -13,7 +14,7 @@ const OfferHost = ({
     <h2 className="offer__host-title">Meet the host</h2>
     <div className="offer__host-user user">
       <div
-        className={`offer__avatar-wrapper ${isPro ? 'offer__avatar-wrapper--pro' : ''} user__avatar-wrapper`}
+        className={classNames('offer__avatar-wrapper', 'user__avatar-wrapper', {'offer__avatar-wrapper--pro': isPro})}
       >
         <img
           className="offer__avatar user__avatar"

@@ -14,6 +14,7 @@ import { getCurrentCity } from '../../store/slices/app/app.selectors';
 import { setCurrentCity } from '../../store/slices/app/app.slice';
 import ErrorBanner from '../../components/error-banner/error-banner';
 import Spinner from '../../components/spinner/spinner';
+import classNames from 'classnames';
 
 const Main = (): JSX.Element => {
   const currentCity = useAppSelector(getCurrentCity);
@@ -30,6 +31,10 @@ const Main = (): JSX.Element => {
     [dispatch],
   );
 
+  const containerClass = classNames('cities__places-container', 'container', {
+    'cities__places-container--empty': isEmpty,
+  });
+
   return (
     <>
       <h1 className="visually-hidden">Cities</h1>
@@ -38,9 +43,7 @@ const Main = (): JSX.Element => {
         onCityClick={changeActiveCity}
       />
       <div className="cities">
-        <div
-          className={`cities__places-container ${isEmpty ? 'cities__places-container--empty' : ''} container`}
-        >
+        <div className={containerClass}>
           {isOffersLoading && <Spinner />}
           {hasLoadingError && <ErrorBanner />}
           {isEmpty && !hasLoadingError && !isOffersLoading && <NoPlaces />}

@@ -13,6 +13,7 @@ import { Size } from './const';
 import { getAuthorizationStatus } from '../../store/slices/user/user.selectors';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import classNames from 'classnames';
 
 type BookmarkProps = {
   isActive: boolean;
@@ -56,9 +57,13 @@ const Bookmark = ({
       });
   };
 
+  const buttonClass = classNames(`${block}__bookmark-button`, 'button', {
+    [`${block}__bookmark-button--active`]: isActive,
+  });
+
   return (
     <button
-      className={`${block}__bookmark-button ${isActive ? `${block}__bookmark-button--active` : ''} button`}
+      className={buttonClass}
       type="button"
       onClick={handleBookmarkClick}
       disabled={isFetching}

@@ -1,5 +1,6 @@
 import { memo, MouseEvent } from 'react';
 import { City } from '../../types/common';
+import classNames from 'classnames';
 
 type CityTabProps = {
   city: City;
@@ -16,13 +17,13 @@ const CityTab = memo(
       }
     };
 
+    const tabClass = classNames('locations__item-link', 'tabs__item', {
+      'tabs__item--active': isActive,
+    });
+
     return (
       <li className="locations__item">
-        <a
-          className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
-          onClick={handleTabClick}
-          href="#"
-        >
+        <a className={tabClass} onClick={handleTabClick} href="#">
           <span>{city.name}</span>
         </a>
       </li>

@@ -12,6 +12,7 @@ import { getOffers } from '../../store/slices/offers/offers.selectors';
 import { getFavorites } from '../../store/slices/favorites/favorites.selectors';
 
 import styles from './layout.module.css';
+import classNames from 'classnames';
 
 const Layout = (): JSX.Element => {
   const locationPathname = useLocation().pathname;
@@ -20,7 +21,9 @@ const Layout = (): JSX.Element => {
   const offersCount = useAppSelector(getOffers).length;
   const favoritesCount = useAppSelector(getFavorites).length;
 
-  const isEmpty = (locationPathname === AppRoute.Root && offersCount === 0) || (locationPathname === AppRoute.Favorites && favoritesCount === 0);
+  const isEmpty =
+    (locationPathname === AppRoute.Root && offersCount === 0) ||
+    (locationPathname === AppRoute.Favorites && favoritesCount === 0);
 
   const isFooterNeeded =
     !matchPath(AppRoute.Root, locationPathname) &&
@@ -30,7 +33,7 @@ const Layout = (): JSX.Element => {
   const containerModifications = getContainerModifications(
     locationPathname,
     authorizationStatus,
-    isEmpty
+    isEmpty,
   );
 
   const mainElementModifications = getMainElementModifications(
@@ -38,10 +41,21 @@ const Layout = (): JSX.Element => {
     isEmpty,
   );
 
+  const containerClass = classNames(
+    'page',
+    containerModifications,
+    styles.page,
+  );
+  const mainElementClass = classNames(
+    'page__main',
+    mainElementModifications,
+    styles.main,
+  );
+
   return (
-    <div className={`page ${containerModifications} ${styles.page}`}>
+    <div className={containerClass}>
       <Header />
-      <main className={`page__main ${mainElementModifications} ${styles.main}`}>
+      <main className={mainElementClass}>
         <Outlet />
       </main>
       {isFooterNeeded && <Footer />}

@@ -6,6 +6,7 @@ import { SortOption } from '../../const/business';
 import SortItem from '../sort-item/sort-item';
 import { setSort } from '../../store/slices/app/app.slice';
 import { getSort } from '../../store/slices/app/app.selectors';
+import classNames from 'classnames';
 
 const SortSelector = memo((): JSX.Element => {
   const currentSortType = useAppSelector(getSort);
@@ -27,6 +28,11 @@ const SortSelector = memo((): JSX.Element => {
   const handleSortItemClick = () => setIsOptionsOpen(!isOptionsOpen);
 
   const sortTypes = Object.values(SortOption);
+
+  const listClass = classNames('places__options', 'places__options--custom', {
+    'places__options--opened': isOptionsOpen,
+  });
+
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>{' '}
@@ -41,7 +47,7 @@ const SortSelector = memo((): JSX.Element => {
         </svg>
       </span>
       <ul
-        className={`places__options places__options--custom ${isOptionsOpen ? 'places__options--opened' : ''}`}
+        className={listClass}
       >
         {sortTypes.map((sortItem) => (
           <SortItem
