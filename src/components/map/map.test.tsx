@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import Map from './map';
-import { currentCustomIcon, defaultCustomIcon } from './const';
 import { makeFakeOfferPreview, makeFakeStore } from '../../utils/mocks';
 import { withStore } from '../../utils/mock-component';
+import { CURRENT_CUSTOM_ICON, DEFAULT_CUSTOM_ICON } from './const';
 
 const addTo = vi.fn();
 const setIcon = vi.fn(() => ({
@@ -85,7 +85,7 @@ describe('Component: Map', () => {
 
     render(withStoreComponent);
 
-    expect(setIcon).toHaveBeenCalledWith(currentCustomIcon);
-    expect(setIcon).toHaveBeenCalledWith(defaultCustomIcon);
+    expect(setIcon).toHaveBeenCalledWith(CURRENT_CUSTOM_ICON);
+    expect(setIcon).toHaveBeenCalledWith(DEFAULT_CUSTOM_ICON);
   });
 });

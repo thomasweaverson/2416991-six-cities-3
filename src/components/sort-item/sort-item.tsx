@@ -8,15 +8,18 @@ type SortOptionProps = {
 };
 
 const SortItem = memo(
-  ({ title, isActive, onItemClick }: SortOptionProps): JSX.Element => (
-    <li
-      className={`places__option ${isActive ? 'places__option--active' : ''}`}
-      tabIndex={0}
-      onClick={() => onItemClick(title)}
-    >
-      {title}
-    </li>
-  ),
+  ({ title, isActive, onItemClick }: SortOptionProps): JSX.Element => {
+    const handleItemClick = () => onItemClick(title);
+    return (
+      <li
+        className={`places__option ${isActive ? 'places__option--active' : ''}`}
+        tabIndex={0}
+        onClick={handleItemClick}
+      >
+        {title}
+      </li>
+    );
+  },
 );
 
 SortItem.displayName = 'SortItem';

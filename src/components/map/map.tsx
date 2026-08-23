@@ -3,12 +3,12 @@ import { Offer, OfferPreview } from '../../types/offer';
 import useMap from '../../hooks/use-map';
 import { layerGroup, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { currentCustomIcon, defaultCustomIcon } from './const';
 import { BlockName, City } from '../../types/common';
 import { Block } from '../../const/common';
 import { useAppSelector } from '../../hooks';
 import { getActiveOffId } from '../../store/slices/app/app.selectors';
 import { areMapPropsEqual } from './utils';
+import { CURRENT_CUSTOM_ICON, DEFAULT_CUSTOM_ICON } from './const';
 
 export type MapProps = {
   city: City;
@@ -32,8 +32,8 @@ const Map = ({ city, offers, block = Block.CITIES }: MapProps): JSX.Element => {
         marker
           .setIcon(
             selectedOfferId !== null && offer.id === selectedOfferId
-              ? currentCustomIcon
-              : defaultCustomIcon,
+              ? CURRENT_CUSTOM_ICON
+              : DEFAULT_CUSTOM_ICON,
           )
           .addTo(markerLayer);
       });

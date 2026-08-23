@@ -24,6 +24,8 @@ const SortSelector = memo((): JSX.Element => {
     [dispatch],
   );
 
+  const handleSortItemClick = () => setIsOptionsOpen(!isOptionsOpen);
+
   const sortTypes = Object.values(SortOption);
   return (
     <form className="places__sorting" action="#" method="get">
@@ -31,7 +33,7 @@ const SortSelector = memo((): JSX.Element => {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={() => setIsOptionsOpen(!isOptionsOpen)}
+        onClick={handleSortItemClick}
       >
         {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">

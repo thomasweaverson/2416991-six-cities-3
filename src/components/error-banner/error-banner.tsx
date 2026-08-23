@@ -5,7 +5,7 @@ import styles from './error-banner.module.css';
 const ErrorBanner = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const handleRetryClick = () => {
+  const handleButtonClick = () => {
     dispatch(fetchOffersAction());
   };
 
@@ -16,7 +16,7 @@ const ErrorBanner = (): JSX.Element => {
         <button
           type="button"
           className={`${styles.button} button`}
-          onClick={handleRetryClick}
+          onClick={handleButtonClick}
         >
           Try again
         </button>

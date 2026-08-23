@@ -28,13 +28,13 @@ export const OfferCard = memo(({
   const imageSize =
     block === Block.FAVORITES ? ImageSize.SMALL : ImageSize.REGULAR;
 
-  const mouseEnterHandler = () => {
+  const handleMouseEnter = () => {
     if (block === Block.CITIES) {
       setActiveCardId(offer.id);
     }
   };
 
-  const mouseLeaveHandler = () => {
+  const handleMouseLeave = () => {
     if (block === Block.CITIES) {
       setActiveCardId(null);
     }
@@ -43,8 +43,8 @@ export const OfferCard = memo(({
   return (
     <article
       className={`${block}__card place-card`}
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {offer.isPremium && <Mark />}
       <div className={`${block}__image-wrapper place-card__image-wrapper`}>

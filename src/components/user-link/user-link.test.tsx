@@ -7,6 +7,8 @@ import { withStore } from '../../utils/mock-component';
 import { makeFakeStore, makeFakeOfferPreview } from '../../utils/mocks';
 import { AuthorizationStatus, AppRoute } from '../../const/infrastructure';
 
+import styles from './user-link.module.css';
+
 describe('Component: UserLink', () => {
   it('should display user email and number of favorite offers', () => {
     const { withStoreComponent } = withStore(
@@ -49,6 +51,10 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
+        FAVORITES: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
+        },
       }),
     );
 
@@ -64,6 +70,10 @@ describe('Component: UserLink', () => {
         USER: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
+        },
+        FAVORITES: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
         },
       }),
     );
@@ -87,13 +97,17 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
+        FAVORITES: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
+        },
       }),
     );
 
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
     expect(screen.getByTestId('avatar-wrapper')).toHaveClass(
-      'user__avatar-wrapper--pro',
+      styles.avatarWrapperPro,
     );
   });
 
@@ -111,13 +125,17 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
+        FAVORITES: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
+        },
       }),
     );
 
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
     expect(screen.getByTestId('avatar-wrapper')).not.toHaveClass(
-      'user__avatar-wrapper--pro',
+      styles.avatarWrapperPro,
     );
   });
 

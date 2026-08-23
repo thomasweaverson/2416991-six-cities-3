@@ -11,6 +11,8 @@ import { getAuthorizationStatus } from '../../store/slices/user/user.selectors';
 import { getOffers } from '../../store/slices/offers/offers.selectors';
 import { getFavorites } from '../../store/slices/favorites/favorites.selectors';
 
+import styles from './layout.module.css';
+
 const Layout = (): JSX.Element => {
   const locationPathname = useLocation().pathname;
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
@@ -37,9 +39,9 @@ const Layout = (): JSX.Element => {
   );
 
   return (
-    <div className={`page ${containerModifications}`}>
+    <div className={`page ${containerModifications} ${styles.page}`}>
       <Header />
-      <main className={`page__main ${mainElementModifications}`}>
+      <main className={`page__main ${mainElementModifications} ${styles.main}`}>
         <Outlet />
       </main>
       {isFooterNeeded && <Footer />}

@@ -2,6 +2,7 @@ import { Block } from '../../const/common';
 import { Review } from '../../types/offer';
 import Rating from '../rating/rating';
 import ReviewDate from '../review-date/review-date';
+import styles from './review-item.module.css';
 
 type ReviewProps = {
   review: Review;
@@ -12,7 +13,7 @@ const ReviewItem = ({ review }: ReviewProps): JSX.Element => (
     <div className="reviews__user user">
       <div
         data-testid="review-avatar-wrapper"
-        className={`reviews__avatar-wrapper ${review.user.isPro ? 'reviews__avatar-wrapper--pro' : ''} user__avatar-wrapper`}
+        className={`reviews__avatar-wrapper ${review.user.isPro ? styles.avatarWrapperPro : ''} user__avatar-wrapper`}
       >
         <img
           className="reviews__avatar user__avatar"

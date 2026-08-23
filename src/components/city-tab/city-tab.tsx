@@ -9,7 +9,7 @@ type CityTabProps = {
 
 const CityTab = memo(
   ({ city, isActive, onTabClick }: CityTabProps): JSX.Element => {
-    const tabClickHandler = (evt: MouseEvent<HTMLAnchorElement>) => {
+    const handleTabClick = (evt: MouseEvent<HTMLAnchorElement>) => {
       evt.preventDefault();
       if (!isActive) {
         onTabClick(city);
@@ -20,7 +20,7 @@ const CityTab = memo(
       <li className="locations__item">
         <a
           className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
-          onClick={tabClickHandler}
+          onClick={handleTabClick}
           href="#"
         >
           <span>{city.name}</span>

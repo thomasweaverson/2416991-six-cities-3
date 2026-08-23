@@ -34,7 +34,7 @@ const Bookmark = ({
   const dispatch = useAppDispatch();
   const size = isSmall ? Size.SMALL : Size.BIG;
 
-  const handleClick = (evt: MouseEvent) => {
+  const handleBookmarkClick = (evt: MouseEvent) => {
     evt.preventDefault();
 
     if (authorizationStatus !== AuthorizationStatus.Auth) {
@@ -60,7 +60,7 @@ const Bookmark = ({
     <button
       className={`${block}__bookmark-button ${isActive ? `${block}__bookmark-button--active` : ''} button`}
       type="button"
-      onClick={handleClick}
+      onClick={handleBookmarkClick}
       disabled={isFetching}
     >
       <svg
