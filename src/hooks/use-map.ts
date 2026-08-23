@@ -1,23 +1,24 @@
 import { useEffect, useState, RefObject, useRef } from 'react';
 import { Map, TileLayer } from 'leaflet';
 import { City } from '../types/common';
-import { DEFAULT_CITY } from '../const/business';
 
 const useMap = (
   mapRef: RefObject<HTMLElement | null>,
   city: City,
 ): Map | null => {
   const [map, setMap] = useState<Map | null>(null);
-  const isRenderedRef = useRef<boolean>(false);
+  const mapInstanceRef = useRef<Map | null>(null);
 
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
-      const instance = new Map(mapRef.current, {
+    const mapElement = mapRef.current;
+
+    if (mapElement !== null && mapInstanceRef.current === null) {
+      const instance = new Map(mapElement, {
         center: {
-          lat: DEFAULT_CITY.location.latitude,
-          lng: DEFAULT_CITY.location.longitude,
+          lat: city.location.latitude,
+          lng: city.location.longitude,
         },
-        zoom: DEFAULT_CITY.location.zoom,
+        zoom: city.location.zoom,
       });
 
       const layer = new TileLayer(
@@ -29,17 +30,18 @@ const useMap = (
       );
 
       instance.addLayer(layer);
+      mapInstanceRef.current = instance;
       setMap(instance);
-      isRenderedRef.current = true;
     }
 
     return () => {
-      if (isRenderedRef.current && map) {
-        map.remove();
-        isRenderedRef.current = false;
+      if (mapInstanceRef.current !== null && !document.body.contains(mapElement)) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+        setMap(null);
       }
     };
-  }, [map, mapRef]);
+  }, [mapRef, city.location.latitude, city.location.longitude, city.location.zoom]);
 
   useEffect(() => {
     if (map) {

@@ -18,7 +18,7 @@ export type MapProps = {
 
 const Map = ({ city, offers, block = Block.CITIES }: MapProps): JSX.Element => {
   const selectedOfferId = useAppSelector(getActiveOffId);
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLElement | null>(null);
   const map = useMap(mapRef, city);
 
   useEffect(() => {
