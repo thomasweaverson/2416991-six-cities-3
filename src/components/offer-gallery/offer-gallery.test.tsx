@@ -6,7 +6,6 @@ import OfferGallery from './offer-gallery';
 
 describe('Component: OfferGallery', () => {
   it('should render all images if count is less than or equal to max limit', () => {
-    // Генерируем фейковые данные через faker v5.5.3
     const mockType = 'house';
     const mockImages = Array.from({ length: 3 }, () => faker.image.imageUrl());
 
