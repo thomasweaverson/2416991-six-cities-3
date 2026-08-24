@@ -32,18 +32,30 @@ const useOfferPage = () => {
   const reviews = useAppSelector(getReviews);
 
   useEffect(() => {
-    if (id) {
+    let isMounted = true;
+
+    if (id && isMounted) {
       dispatch(fetchOfferAction(id));
       dispatch(fetchNearOffersAction(id));
       dispatch(fetchReviewsAction(id));
       dispatch(setActiveOfferId(id));
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [id, dispatch]);
 
   useEffect(() => {
-    if (isOfferLoadingError) {
+    let isMounted = true;
+
+    if (isOfferLoadingError && isMounted) {
       navigate(AppRoute.NotFound, { replace: true });
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [isOfferLoadingError, navigate]);
 
   useEffect(

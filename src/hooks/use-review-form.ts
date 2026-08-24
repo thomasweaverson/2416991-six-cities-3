@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ReviewFormData } from '../components/review-form/types';
 import { validateReviewForm } from '../components/review-form/utils';
 import { useAppDispatch } from '.';
 import { postReviewAction } from '../store/api-actions';
+import { ReviewFormData } from '../types/offer';
 
 const INITIAL_FORM_STATE: ReviewFormData = {
   comment: '',

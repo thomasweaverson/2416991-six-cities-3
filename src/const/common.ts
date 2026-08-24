@@ -1,8 +1,8 @@
 export const Block = {
-  CITIES: 'cities',
-  FAVORITES: 'favorites',
-  NEAR_PLACES: 'near-places',
-  OFFER: 'offer',
-  PLACE_CARD: 'place-card',
-  REVIEWS: 'reviews',
+  Cities: 'cities',
+  Favorites: 'favorites',
+  NearPlaces: 'near-places',
+  Offer: 'offer',
+  PlaceCard: 'place-card',
+  Reviews: 'reviews',
 } as const;

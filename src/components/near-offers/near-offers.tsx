@@ -16,7 +16,7 @@ const NearOffers = memo(({ offers }: NearOffersProps): JSX.Element | null => {
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
         {offers.slice(0, 3).map((offer) => (
-          <OfferCard key={offer.id} block={Block.NEAR_PLACES} offer={offer} />
+          <OfferCard key={offer.id} block={Block.NearPlaces} offer={offer} />
         ))}
       </div>
     </section>

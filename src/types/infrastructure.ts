@@ -1,6 +1,4 @@
-import { AppRoute, AuthorizationStatus } from '../const/infrastructure';
-
-export type Route = (typeof AppRoute)[keyof typeof AppRoute];
+import { AuthorizationStatus } from '../const/infrastructure';
 
 export type AuthStatus =
   (typeof AuthorizationStatus)[keyof typeof AuthorizationStatus];

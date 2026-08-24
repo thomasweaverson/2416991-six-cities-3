@@ -1,9 +1,9 @@
 export const ImageSize = {
-  REGULAR: {
+  Regular: {
     width: 260,
     height: 200,
   },
-  SMALL: {
+  Small: {
     width: 150,
     height: 110,
   },

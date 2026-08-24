@@ -37,7 +37,7 @@ describe('Component: SortSelector', () => {
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
     expect(
-      screen.getByText(SortOption.POPULAR, {
+      screen.getByText(SortOption.Popular, {
         selector: '.places__sorting-type',
       }),
     ).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe('Component: SortSelector', () => {
 
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
-    const sortingType = screen.getByText(SortOption.POPULAR, {
+    const sortingType = screen.getByText(SortOption.Popular, {
       selector: '.places__sorting-type',
     });
 
@@ -68,7 +68,7 @@ describe('Component: SortSelector', () => {
 
     const activeOption = screen
       .getAllByTestId('sort-item')
-      .find((item) => item.textContent === SortOption.POPULAR);
+      .find((item) => item.textContent === SortOption.Popular);
 
     expect(activeOption).toHaveClass('active');
   });
@@ -84,7 +84,7 @@ describe('Component: SortSelector', () => {
     const options = screen.getAllByTestId('sort-item');
 
     const optionToSelect = options.find(
-      (item) => item.textContent !== SortOption.POPULAR,
+      (item) => item.textContent !== SortOption.Popular,
     );
 
     if (!optionToSelect) {

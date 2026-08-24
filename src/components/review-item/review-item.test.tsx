@@ -4,6 +4,8 @@ import { describe, expect, it, vi } from 'vitest';
 import ReviewItem from './review-item';
 import { makeFakeReview } from '../../utils/mocks';
 
+import styles from './review-item.module.css';
+
 vi.mock('../rating/rating', () => ({
   default: ({ rating }: { rating: number }) => (
     <div data-testid="rating">{rating}</div>
@@ -37,7 +39,7 @@ describe('Component: ReviewItem', () => {
 
     render(<ReviewItem review={review} />);
 
-    expect(screen.getByTestId('review-avatar-wrapper')).toHaveClass('reviews__avatar-wrapper--pro');
+    expect(screen.getByTestId('review-avatar-wrapper')).toHaveClass(styles.avatarWrapperPro);
   });
 
   it('should not add pro class for regular user', () => {

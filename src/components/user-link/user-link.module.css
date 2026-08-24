@@ -1,0 +1,23 @@
+.avatarImage {
+  border-radius: 50%;
+  position: relative;
+}
+
+.avatarWrapperPro {
+  position: relative;
+}
+
+.avatarWrapperPro::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ff9000;
+  background-image: url('/img/star-white.svg');
+  background-size: 15px 11px;
+  background-position: center 2px;
+  background-repeat: no-repeat;
+}

@@ -11,12 +11,12 @@ describe('Component: Mark', () => {
     const wrapperElement = titleElement.parentElement;
 
     expect(titleElement).toBeInTheDocument();
-    expect(wrapperElement).toHaveClass(`${Block.PLACE_CARD}__mark`);
+    expect(wrapperElement).toHaveClass(`${Block.PlaceCard}__mark`);
   });
 
   it('should render correctly with custom props', () => {
     const expectedTitle = 'SomeBoringTestTitle';
-    const customBlock = Block.OFFER;
+    const customBlock = Block.Offer;
 
     render(<Mark blockClassName={customBlock} title={expectedTitle} />);
 

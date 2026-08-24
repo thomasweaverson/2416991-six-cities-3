@@ -26,7 +26,7 @@ describe('Component: Bookmark', () => {
     const { withStoreComponent } = withStore(
       <Bookmark isActive offerId={fakeOffer.id} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },
@@ -39,14 +39,14 @@ describe('Component: Bookmark', () => {
       name: 'To bookmarks',
     });
 
-    expect(button).toHaveClass(`${Block.PLACE_CARD}__bookmark-button--active`);
+    expect(button).toHaveClass(`${Block.PlaceCard}__bookmark-button--active`);
   });
 
   it('should render big bookmark when isSmall is false', () => {
     const { withStoreComponent } = withStore(
       <Bookmark isActive={false} isSmall={false} offerId={fakeOffer.id} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },
@@ -65,7 +65,7 @@ describe('Component: Bookmark', () => {
     const { withStoreComponent } = withStore(
       <Bookmark isActive={false} offerId={fakeOffer.id} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -91,7 +91,7 @@ describe('Component: Bookmark', () => {
     const { withStoreComponent, mockStore, mockAxiosAdapter } = withStore(
       <Bookmark isActive={false} offerId={fakeOffer.id} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },
@@ -115,7 +115,7 @@ describe('Component: Bookmark', () => {
     const { withStoreComponent, mockStore, mockAxiosAdapter } = withStore(
       <Bookmark isActive offerId={fakeOffer.id} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },

@@ -21,12 +21,20 @@ const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   useEffect(() => {
+    let isMounted = true;
+
     if (authorizationStatus !== AuthorizationStatus.Unknown) {
-      dispatch(fetchOffersAction());
-      if (authorizationStatus === AuthorizationStatus.Auth) {
+      if (isMounted) {
+        dispatch(fetchOffersAction());
+      }
+      if (authorizationStatus === AuthorizationStatus.Auth && isMounted) {
         dispatch(fetchFavoritesAction());
       }
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [authorizationStatus, dispatch]);
 
   if (authorizationStatus === AuthorizationStatus.Unknown) {

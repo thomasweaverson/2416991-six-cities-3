@@ -17,13 +17,13 @@ export const extractActionsTypes = (actions: Action<string>[]) =>
   actions.map(({ type }) => type);
 
 export const makeFakeStore = (initialState?: Partial<State>): State => ({
-  APP: {
+  App: {
     activeOfferId: null,
     currentCity: DEFAULT_CITY,
     sortOption: DEFAULT_SORT_OPTION,
   },
-  OFFERS: { offers: [], isOffersLoading: false, isOffersLoadingError: false },
-  OFFER: {
+  Offers: { offers: [], isOffersLoading: false, isOffersLoadingError: false },
+  Offer: {
     offer: null,
     isOfferLoading: false,
     isOfferLoadingError: false,
@@ -31,9 +31,9 @@ export const makeFakeStore = (initialState?: Partial<State>): State => ({
     nearOffers: [],
     isNearOffersLoading: false,
   },
-  REVIEWS: { reviews: [], isPosting: false },
-  FAVORITES: { favoriteOffers: [], isFavoritesLoading: false },
-  USER: { userInfo: null, authorizationStatus: AuthorizationStatus.Unknown },
+  Reviews: { reviews: [], isPosting: false },
+  Favorites: { favoriteOffers: [], isFavoritesLoading: false },
+  User: { userInfo: null, authorizationStatus: AuthorizationStatus.Unknown },
   ...(initialState ?? {}),
 });
 

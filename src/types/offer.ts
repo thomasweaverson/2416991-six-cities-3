@@ -50,3 +50,5 @@ export type ReviewServer = {
   comment: string;
   rating: number;
 };
+
+export type ReviewFormData = Omit<ReviewServer, 'id'>

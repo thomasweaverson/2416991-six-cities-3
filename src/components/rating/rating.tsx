@@ -6,7 +6,7 @@ import { getStarsWidth } from './utils';
 type RatingProps = { block?: BlockName } & Pick<Offer, 'rating'>;
 
 const Rating = ({
-  block = Block.PLACE_CARD,
+  block = Block.PlaceCard,
   rating,
 }: RatingProps): JSX.Element => {
   const width = getStarsWidth(rating);
@@ -16,7 +16,7 @@ const Rating = ({
         <span style={{ width }}></span>
         <span className="visually-hidden">Rating</span>
       </div>
-      {block === Block.OFFER && (
+      {block === Block.Offer && (
         <span className={`${block}__rating-value rating__value`}>{rating}</span>
       )}
     </div>

@@ -16,23 +16,14 @@ vi.mock('../footer/footer', () => ({
 }));
 
 describe('Component: Layout', () => {
-  const renderLayout = (
-    pathname: string,
-    initialState = makeFakeStore(),
-  ) => {
-    const { withStoreComponent } = withStore(
-      <Layout />,
-      initialState,
-    );
+  const renderLayout = (pathname: string, initialState = makeFakeStore()) => {
+    const { withStoreComponent } = withStore(<Layout />, initialState);
 
     return render(
       <MemoryRouter initialEntries={[pathname]}>
         <Routes>
           <Route element={withStoreComponent}>
-            <Route
-              path="*"
-              element={<div>Page content</div>}
-            />
+            <Route path="*" element={<div>Page content</div>} />
           </Route>
         </Routes>
       </MemoryRouter>,
@@ -74,11 +65,11 @@ describe('Component: Layout', () => {
     const { container } = renderLayout(
       '/',
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        OFFERS: {
+        Offers: {
           offers: [],
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -101,11 +92,11 @@ describe('Component: Layout', () => {
     const { container } = renderLayout(
       '/favorites',
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },

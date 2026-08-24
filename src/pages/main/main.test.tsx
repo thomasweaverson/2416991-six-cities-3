@@ -12,6 +12,7 @@ import {
 } from '../../utils/mocks';
 import { setCurrentCity } from '../../store/slices/app/app.slice';
 import { City } from '../../types/common';
+import { DEFAULT_SORT_OPTION } from '../../const/business';
 
 const selectedCity = makeFakeCity('Paris');
 
@@ -54,7 +55,7 @@ describe('Page: Main', () => {
     const { withStoreComponent } = withStore(
       <Main />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers: [],
           isOffersLoading: true,
           isOffersLoadingError: false,
@@ -73,7 +74,7 @@ describe('Page: Main', () => {
     const { withStoreComponent } = withStore(
       <Main />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers: [],
           isOffersLoading: false,
           isOffersLoadingError: true,
@@ -92,7 +93,7 @@ describe('Page: Main', () => {
     const { withStoreComponent } = withStore(
       <Main />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers: [],
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -113,7 +114,7 @@ describe('Page: Main', () => {
     const { withStoreComponent } = withStore(
       <Main />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers,
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -134,15 +135,15 @@ describe('Page: Main', () => {
     const { withStoreComponent, mockStore } = withStore(
       <Main />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers: [],
           isOffersLoading: false,
           isOffersLoadingError: false,
         },
-        APP: {
+        App: {
           activeOfferId: null,
           currentCity: makeFakeCity('Amsterdam'),
-          sortOption: 'Popular',
+          sortOption: DEFAULT_SORT_OPTION,
         },
       }),
     );

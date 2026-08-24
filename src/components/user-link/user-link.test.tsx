@@ -7,12 +7,14 @@ import { withStore } from '../../utils/mock-component';
 import { makeFakeStore, makeFakeOfferPreview } from '../../utils/mocks';
 import { AuthorizationStatus, AppRoute } from '../../const/infrastructure';
 
+import styles from './user-link.module.css';
+
 describe('Component: UserLink', () => {
   it('should display user email and number of favorite offers', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -22,7 +24,7 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [makeFakeOfferPreview(), makeFakeOfferPreview()],
           isFavoritesLoading: false,
         },
@@ -39,7 +41,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: '',
@@ -48,6 +50,10 @@ describe('Component: UserLink', () => {
             isPro: false,
           },
           authorizationStatus: AuthorizationStatus.Auth,
+        },
+        Favorites: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
         },
       }),
     );
@@ -61,9 +67,13 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
+        },
+        Favorites: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
         },
       }),
     );
@@ -77,7 +87,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -87,13 +97,17 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
+        Favorites: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
+        },
       }),
     );
 
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
     expect(screen.getByTestId('avatar-wrapper')).toHaveClass(
-      'user__avatar-wrapper--pro',
+      styles.avatarWrapperPro,
     );
   });
 
@@ -101,7 +115,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -111,13 +125,17 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
+        Favorites: {
+          favoriteOffers: [],
+          isFavoritesLoading: false,
+        },
       }),
     );
 
     render(<MemoryRouter>{withStoreComponent}</MemoryRouter>);
 
     expect(screen.getByTestId('avatar-wrapper')).not.toHaveClass(
-      'user__avatar-wrapper--pro',
+      styles.avatarWrapperPro,
     );
   });
 

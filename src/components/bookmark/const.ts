@@ -1,9 +1,9 @@
 export const Size = {
-  SMALL: {
+  Small: {
     width: '18',
     height: '19',
   },
-  BIG: {
+  Big: {
     width: '31',
     height: '33',
   },

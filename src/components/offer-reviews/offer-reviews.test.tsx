@@ -13,9 +13,7 @@ vi.mock('../review-form/review-form', () => ({
 
 vi.mock('../reviews-list/reviews-list', () => ({
   default: ({ reviews }: { reviews: unknown[] }) => (
-    <div data-testid="reviews-list">
-      {reviews.length} reviews
-    </div>
+    <div data-testid="reviews-list">{reviews.length} reviews</div>
   ),
 }));
 
@@ -25,15 +23,12 @@ vi.mock('../spinner/spinner', () => ({
 
 describe('Component: OfferReviews', () => {
   it('should render reviews and their amount', () => {
-    const reviews = [
-      makeFakeReview('review-1'),
-      makeFakeReview('review-2'),
-    ];
+    const reviews = [makeFakeReview('review-1'), makeFakeReview('review-2')];
 
     const { withStoreComponent } = withStore(
       <OfferReviews reviews={reviews} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -50,7 +45,7 @@ describe('Component: OfferReviews', () => {
     const { withStoreComponent } = withStore(
       <OfferReviews reviews={[]} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -72,7 +67,7 @@ describe('Component: OfferReviews', () => {
     const { withStoreComponent } = withStore(
       <OfferReviews reviews={reviews} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -90,7 +85,7 @@ describe('Component: OfferReviews', () => {
     const { withStoreComponent } = withStore(
       <OfferReviews reviews={[]} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Unknown,
         },
@@ -106,7 +101,7 @@ describe('Component: OfferReviews', () => {
     const { withStoreComponent } = withStore(
       <OfferReviews reviews={[]} />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.Auth,
         },

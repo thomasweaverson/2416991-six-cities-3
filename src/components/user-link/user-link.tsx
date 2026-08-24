@@ -3,20 +3,29 @@ import { AppRoute } from '../../const/infrastructure';
 import { useAppSelector } from '../../hooks';
 import { getUserInfo } from '../../store/slices/user/user.selectors';
 import { getFavorites } from '../../store/slices/favorites/favorites.selectors';
+import styles from './user-link.module.css';
+import classNames from 'classnames';
 
 const UserLink = (): JSX.Element => {
   const user = useAppSelector(getUserInfo);
   const favoriteOffersCount = useAppSelector(getFavorites).length;
+  const wrapperClass = classNames(
+    'header__avatar-wrapper',
+    'user__avatar-wrapper',
+    { [styles.avatarWrapperPro]: user?.isPro },
+  );
+
   return (
     <Link
       className="header__nav-link header__nav-link--profile"
       to={AppRoute.Favorites}
     >
-      <div
-        data-testid="avatar-wrapper"
-        className={`header__avatar-wrapper user__avatar-wrapper ${user?.isPro ? 'user__avatar-wrapper--pro' : ''}`}
-      >
-        <img className="user__avatar-image" src={user?.avatarUrl} />
+      <div data-testid="avatar-wrapper" className={wrapperClass}>
+        <img
+          className={styles.avatarImage}
+          src={user?.avatarUrl}
+          alt={user?.name || 'User avatar'}
+        />
       </div>
       <span className="header__user-name user__name">
         {user?.email || user?.name || 'John Doe'}

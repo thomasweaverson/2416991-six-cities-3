@@ -20,7 +20,7 @@ describe('Component: Rating', () => {
   it('should render numeric rating value when block prop is Block.OFFER', () => {
     const mockRating = faker.datatype.number({ min: 1, max: 5 });
 
-    render(<Rating block={Block.OFFER} rating={mockRating} />);
+    render(<Rating block={Block.Offer} rating={mockRating} />);
 
     expect(screen.getByText(mockRating.toString())).toBeInTheDocument();
   });

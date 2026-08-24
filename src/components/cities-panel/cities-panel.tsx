@@ -26,6 +26,7 @@ const CitiesPanel = memo(
     </div>
   ),
 );
+
 CitiesPanel.displayName = 'CitiesPanel';
 
 export default CitiesPanel;

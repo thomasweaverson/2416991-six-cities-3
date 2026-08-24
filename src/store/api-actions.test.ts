@@ -272,7 +272,7 @@ describe('Async actions', () => {
       const mockAdaptedPreviewOffer = { ...mockOfferPreview, isFavorite: true };
 
       store = mockStoreCreator({
-        OFFERS: {
+        Offers: {
           offers: [mockOfferPreview],
         },
       } as unknown as Partial<State>);

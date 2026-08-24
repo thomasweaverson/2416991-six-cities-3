@@ -25,7 +25,7 @@ describe('Page: Favorites', () => {
     const { withStoreComponent } = withStore(
       <Favorites />,
       makeFakeStore({
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: true,
         },
@@ -41,7 +41,7 @@ describe('Page: Favorites', () => {
     const { withStoreComponent } = withStore(
       <Favorites />,
       makeFakeStore({
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -67,7 +67,7 @@ describe('Page: Favorites', () => {
     const { withStoreComponent } = withStore(
       <Favorites />,
       makeFakeStore({
-        FAVORITES: {
+        Favorites: {
           favoriteOffers,
           isFavoritesLoading: false,
         },
@@ -90,7 +90,7 @@ describe('Page: Favorites', () => {
     const { withStoreComponent } = withStore(
       <Favorites />,
       makeFakeStore({
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: true,
         },

@@ -13,6 +13,7 @@ import { Size } from './const';
 import { getAuthorizationStatus } from '../../store/slices/user/user.selectors';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import classNames from 'classnames';
 
 type BookmarkProps = {
   isActive: boolean;
@@ -23,7 +24,7 @@ type BookmarkProps = {
 
 const Bookmark = ({
   isActive,
-  block = Block.PLACE_CARD,
+  block = Block.PlaceCard,
   isSmall = true,
   offerId,
 }: BookmarkProps): JSX.Element => {
@@ -32,9 +33,9 @@ const Bookmark = ({
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const size = isSmall ? Size.SMALL : Size.BIG;
+  const size = isSmall ? Size.Small : Size.Big;
 
-  const handleClick = (evt: MouseEvent) => {
+  const handleBookmarkClick = (evt: MouseEvent) => {
     evt.preventDefault();
 
     if (authorizationStatus !== AuthorizationStatus.Auth) {
@@ -56,11 +57,15 @@ const Bookmark = ({
       });
   };
 
+  const buttonClass = classNames(`${block}__bookmark-button`, 'button', {
+    [`${block}__bookmark-button--active`]: isActive,
+  });
+
   return (
     <button
-      className={`${block}__bookmark-button ${isActive ? `${block}__bookmark-button--active` : ''} button`}
+      className={buttonClass}
       type="button"
-      onClick={handleClick}
+      onClick={handleBookmarkClick}
       disabled={isFetching}
     >
       <svg
