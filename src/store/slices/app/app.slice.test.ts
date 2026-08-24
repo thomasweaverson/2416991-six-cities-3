@@ -32,7 +32,7 @@ describe('App Slice Reducer', () => {
     });
 
     it('should change sort option with "setSort" action', () => {
-      const targetSort: SortType = SortOption.TOP_RATED_FIRST;
+      const targetSort: SortType = SortOption.TopRatedFirst;
 
       const result = appSlice.reducer(initialState, setSort(targetSort));
 

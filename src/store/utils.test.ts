@@ -29,19 +29,19 @@ describe('Store Utils', () => {
     });
 
     it('should filter by city and sort offers by price: low to high', () => {
-      const result = prepareOffers(offers, paris, SortOption.PRICE_LOW_TO_HIGH);
+      const result = prepareOffers(offers, paris, SortOption.PriceLowToHigh);
 
       expect(result).toEqual([parisCheap, parisExpensive]);
     });
 
     it('should filter by city and sort offers by price: high to low', () => {
-      const result = prepareOffers(offers, paris, SortOption.PRICE_HIGH_TO_LOW);
+      const result = prepareOffers(offers, paris, SortOption.PriceHighToLow);
 
       expect(result).toEqual([parisExpensive, parisCheap]);
     });
 
     it('should filter by city and sort offers by top rated first', () => {
-      const result = prepareOffers(offers, paris, SortOption.TOP_RATED_FIRST);
+      const result = prepareOffers(offers, paris, SortOption.TopRatedFirst);
 
       expect(result).toEqual([parisExpensive, parisCheap]);
     });

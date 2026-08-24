@@ -8,6 +8,7 @@ import {
   makeFakeStore,
   makeFakeCity,
 } from '../../utils/mocks';
+import { DEFAULT_SORT_OPTION } from '../../const/business';
 
 vi.mock('../sort-selector/sort-selector', () => ({
   default: () => <div>Sort selector</div>,
@@ -15,9 +16,7 @@ vi.mock('../sort-selector/sort-selector', () => ({
 
 vi.mock('../card-list/card-list', () => ({
   default: ({ offers }: { offers: unknown[] }) => (
-    <div data-testid="card-list">
-      {offers.length} offers
-    </div>
+    <div data-testid="card-list">{offers.length} offers</div>
   ),
 }));
 
@@ -34,12 +33,12 @@ describe('Component: OffersBoard', () => {
     const { withStoreComponent } = withStore(
       <OffersBoard />,
       makeFakeStore({
-        APP: {
+        App: {
           activeOfferId: null,
           currentCity: city,
-          sortOption: 'Popular',
+          sortOption: DEFAULT_SORT_OPTION,
         },
-        OFFERS: {
+        Offers: {
           offers,
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -49,9 +48,7 @@ describe('Component: OffersBoard', () => {
 
     render(withStoreComponent);
 
-    expect(
-      screen.getByText('3 places to stay in Paris'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('3 places to stay in Paris')).toBeInTheDocument();
   });
 
   it('should use singular form for one offer', () => {
@@ -61,12 +58,12 @@ describe('Component: OffersBoard', () => {
     const { withStoreComponent } = withStore(
       <OffersBoard />,
       makeFakeStore({
-        APP: {
+        App: {
           activeOfferId: null,
           currentCity: city,
-          sortOption: 'Popular',
+          sortOption: DEFAULT_SORT_OPTION,
         },
-        OFFERS: {
+        Offers: {
           offers,
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -76,21 +73,16 @@ describe('Component: OffersBoard', () => {
 
     render(withStoreComponent);
 
-    expect(
-      screen.getByText('1 place to stay in Paris'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('1 place to stay in Paris')).toBeInTheDocument();
   });
 
   it('should pass offers to CardList', () => {
-    const offers = [
-      makeFakeOfferPreview(),
-      makeFakeOfferPreview(),
-    ];
+    const offers = [makeFakeOfferPreview(), makeFakeOfferPreview()];
 
     const { withStoreComponent } = withStore(
       <OffersBoard />,
       makeFakeStore({
-        OFFERS: {
+        Offers: {
           offers,
           isOffersLoading: false,
           isOffersLoadingError: false,
@@ -100,8 +92,6 @@ describe('Component: OffersBoard', () => {
 
     render(withStoreComponent);
 
-    expect(screen.getByTestId('card-list')).toHaveTextContent(
-      '2 offers',
-    );
+    expect(screen.getByTestId('card-list')).toHaveTextContent('2 offers');
   });
 });

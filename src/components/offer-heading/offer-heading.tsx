@@ -15,11 +15,11 @@ const OfferHeading = ({
   id,
 }: OfferHeadingProps): JSX.Element => (
   <>
-    {isPremium && <Mark blockClassName={Block.OFFER} />}
+    {isPremium && <Mark blockClassName={Block.Offer} />}
     <div className="offer__name-wrapper">
       <h1 className="offer__name">{title}</h1>
       <Bookmark
-        block={Block.OFFER}
+        block={Block.Offer}
         isSmall={false}
         isActive={isFavorite}
         offerId={id}

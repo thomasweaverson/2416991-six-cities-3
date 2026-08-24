@@ -15,7 +15,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.NoAuth,
           userInfo: null,
         },
@@ -32,7 +32,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.NoAuth,
           userInfo: null,
         },
@@ -62,7 +62,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.Auth,
           userInfo: fakeUserData,
         },
@@ -90,11 +90,11 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.Auth,
           userInfo: fakeUserData,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -111,11 +111,11 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.NoAuth,
           userInfo: null,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -137,11 +137,11 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.NoAuth,
           userInfo: null,
         },
-        OFFER: {
+        Offer: {
           offer: makeFakeOffer(),
           isOfferLoading: false,
           isOfferLoadingError: false,
@@ -152,7 +152,7 @@ describe('Application Routing', () => {
             makeFakeOfferPreview(),
           ],
           isNearOffersLoading: false,
-        },
+        }
       }),
     );
 
@@ -170,7 +170,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.NoAuth,
           userInfo: null,
         },
@@ -189,7 +189,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(
       withHistoryComponent,
       makeFakeStore({
-        USER: {
+        User: {
           authorizationStatus: AuthorizationStatus.Unknown,
           userInfo: null,
         },

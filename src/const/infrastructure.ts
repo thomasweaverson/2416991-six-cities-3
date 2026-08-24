@@ -31,10 +31,10 @@ export enum FavoriteStatus {
 }
 
 export enum NameSpace {
-  Offers = 'OFFERS',
-  Offer = 'OFFER',
-  App = 'APP',
-  Reviews = 'REVIEWS',
-  Favorites = 'FAVORITES',
-  User = 'USER',
+  Offers = 'Offers',
+  Offer = 'Offer',
+  App = 'App',
+  Reviews = 'Reviews',
+  Favorites = 'Favorites',
+  User = 'User',
 }

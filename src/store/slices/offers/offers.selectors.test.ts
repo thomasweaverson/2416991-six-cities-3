@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import { NameSpace } from '../../../const/infrastructure';
-import { SortType } from '../../../types/common';
 import {
   getRawOffers,
   getIsOffersLoading,
@@ -8,6 +7,7 @@ import {
   getOffers,
 } from './offers.selectors';
 import { makeFakeCity, makeFakeOfferPreview } from '../../../utils/mocks';
+import { DEFAULT_SORT_OPTION } from '../../../const/business';
 
 describe('Offers selectors', () => {
   const parisOfferLowPrice = makeFakeOfferPreview('paris-1', 'Paris', 100);
@@ -28,7 +28,7 @@ describe('Offers selectors', () => {
     },
     [NameSpace.App]: {
       currentCity: makeFakeCity('Paris'),
-      sortOption: 'Popular' as SortType,
+      sortOption: DEFAULT_SORT_OPTION,
       activeOfferId: null,
     },
   };

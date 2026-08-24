@@ -8,7 +8,7 @@ type CardMarkProps = {
 
 const Mark = ({
   title = 'Premium',
-  blockClassName = Block.PLACE_CARD,
+  blockClassName = Block.PlaceCard,
 }: CardMarkProps): JSX.Element => (
   <div className={`${blockClassName}__mark`}>
     <span>{title}</span>

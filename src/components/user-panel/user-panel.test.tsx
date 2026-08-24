@@ -18,7 +18,7 @@ describe('Component: UserPanel', () => {
     const { withStoreComponent } = withStore(
       <UserPanel />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -36,7 +36,7 @@ describe('Component: UserPanel', () => {
     const { withStoreComponent } = withStore(
       <UserPanel />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
@@ -60,7 +60,7 @@ describe('Component: UserPanel', () => {
     const { withStoreComponent } = withStore(
       <UserPanel />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@example.com',
@@ -84,7 +84,7 @@ describe('Component: UserPanel', () => {
     const { withStoreComponent, mockStore } = withStore(
       <UserPanel />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@example.com',

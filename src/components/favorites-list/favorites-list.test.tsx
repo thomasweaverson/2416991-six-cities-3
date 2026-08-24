@@ -3,10 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import FavoritesList from './favorites-list';
 import { withHistory, withStore } from '../../utils/mock-component';
-import {
-  makeFakeOfferPreview,
-  makeFakeStore,
-} from '../../utils/mocks';
+import { makeFakeOfferPreview, makeFakeStore } from '../../utils/mocks';
 
 vi.mock('../favorites-item/favorites-item', () => ({
   default: ({
@@ -30,14 +27,12 @@ describe('Component: FavoritesList', () => {
       makeFakeOfferPreview('offer-2', 'Paris'),
     ];
 
-    const londonOffers = [
-      makeFakeOfferPreview('offer-3', 'Amsterdam'),
-    ];
+    const londonOffers = [makeFakeOfferPreview('offer-3', 'Amsterdam')];
 
     const { withStoreComponent } = withStore(
       <FavoritesList />,
       makeFakeStore({
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [...parisOffers, ...londonOffers],
           isFavoritesLoading: false,
         },

@@ -14,7 +14,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -24,7 +24,7 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [makeFakeOfferPreview(), makeFakeOfferPreview()],
           isFavoritesLoading: false,
         },
@@ -41,7 +41,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: '',
@@ -51,7 +51,7 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -67,11 +67,11 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: AuthorizationStatus.NoAuth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -87,7 +87,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -97,7 +97,7 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },
@@ -115,7 +115,7 @@ describe('Component: UserLink', () => {
     const { withStoreComponent } = withStore(
       <UserLink />,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: {
             name: 'Thomas',
             email: 'thomas@test.com',
@@ -125,7 +125,7 @@ describe('Component: UserLink', () => {
           },
           authorizationStatus: AuthorizationStatus.Auth,
         },
-        FAVORITES: {
+        Favorites: {
           favoriteOffers: [],
           isFavoritesLoading: false,
         },

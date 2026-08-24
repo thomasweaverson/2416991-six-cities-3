@@ -24,7 +24,7 @@ type BookmarkProps = {
 
 const Bookmark = ({
   isActive,
-  block = Block.PLACE_CARD,
+  block = Block.PlaceCard,
   isSmall = true,
   offerId,
 }: BookmarkProps): JSX.Element => {
@@ -33,7 +33,7 @@ const Bookmark = ({
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const size = isSmall ? Size.SMALL : Size.BIG;
+  const size = isSmall ? Size.Small : Size.Big;
 
   const handleBookmarkClick = (evt: MouseEvent) => {
     evt.preventDefault();

@@ -60,7 +60,7 @@ describe('Component: OfferHeading', () => {
     );
 
     expect(screen.getByTestId('mark')).toHaveTextContent(
-      Block.OFFER,
+      Block.Offer,
     );
   });
 
@@ -94,7 +94,7 @@ describe('Component: OfferHeading', () => {
     );
 
     expect(screen.getByTestId('bookmark')).toHaveTextContent(
-      `${Block.OFFER}-false-true-${offer.id}`,
+      `${Block.Offer}-false-true-${offer.id}`,
     );
   });
 });

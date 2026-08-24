@@ -50,7 +50,7 @@ const Offer = (): JSX.Element | null => {
               id={offer.id}
             />
 
-            <Rating block={Block.OFFER} rating={offer.rating} />
+            <Rating block={Block.Offer} rating={offer.rating} />
 
             <OfferFeatures
               type={offer.type}
@@ -74,7 +74,7 @@ const Offer = (): JSX.Element | null => {
         </div>
         {isNearOffersLoading && <Spinner />}
         {!isNearOffersLoading && (
-          <Map city={offer.city} offers={mapOffers} block={Block.OFFER} />
+          <Map city={offer.city} offers={mapOffers} block={Block.Offer} />
         )}
       </section>
       {!isNearOffersLoading && (

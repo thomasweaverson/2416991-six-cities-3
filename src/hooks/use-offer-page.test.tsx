@@ -89,7 +89,7 @@ describe('Hook: useOfferPage', () => {
     const nearOffer = makeFakeOfferPreview('2');
 
     const initialState = makeFakeStore({
-      OFFER: {
+      Offer: {
         offer,
         nearOffers: [nearOffer],
         isOfferLoading: false,
@@ -106,7 +106,7 @@ describe('Hook: useOfferPage', () => {
 
   it('should navigate to NotFound route when offer loading fails', () => {
     const initialState = makeFakeStore({
-      OFFER: {
+      Offer: {
         offer: null,
         nearOffers: [],
         isOfferLoading: false,

@@ -30,7 +30,7 @@ describe('Hook: useLayoutState', () => {
 
   it('should return correct state for Main page with offers', () => {
     const fakeStore = makeFakeStore({
-      OFFERS: {
+      Offers: {
         offers: [makeFakeOfferPreview()],
         isOffersLoading: false,
         isOffersLoadingError: false,
@@ -48,7 +48,7 @@ describe('Hook: useLayoutState', () => {
 
   it('should return isEmpty true on Main page when there are no offers', () => {
     const fakeStore = makeFakeStore({
-      OFFERS: {
+      Offers: {
         offers: [],
         isOffersLoading: false,
         isOffersLoadingError: false,
@@ -73,7 +73,7 @@ describe('Hook: useLayoutState', () => {
 
   it('should return correct state for Favorites page with items and footer needed', () => {
     const fakeStore = makeFakeStore({
-      FAVORITES: {
+      Favorites: {
         favoriteOffers: [makeFakeOfferPreview()],
         isFavoritesLoading: false,
       },
@@ -88,7 +88,7 @@ describe('Hook: useLayoutState', () => {
 
   it('should return isEmpty true on Favorites page when there are no favorites', () => {
     const fakeStore = makeFakeStore({
-      FAVORITES: {
+      Favorites: {
         favoriteOffers: [],
         isFavoritesLoading: false,
       },
@@ -112,7 +112,7 @@ describe('Hook: useLayoutState', () => {
 
   it('should handle isUnknownAuth flag correctly', () => {
     const fakeStore = makeFakeStore({
-      USER: {
+      User: {
         userInfo: null,
         authorizationStatus: AuthorizationStatus.Unknown,
       },

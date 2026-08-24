@@ -26,7 +26,7 @@ describe('Component: ProtectedRoute', () => {
         <PrivatePage />
       </ProtectedRoute>,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: fakeUser,
           authorizationStatus: 'AUTH',
         },
@@ -44,7 +44,7 @@ describe('Component: ProtectedRoute', () => {
         <PrivatePage />
       </ProtectedRoute>,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: 'NO_AUTH',
         },
@@ -69,7 +69,7 @@ describe('Component: ProtectedRoute', () => {
         <PublicPage />
       </ProtectedRoute>,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: fakeUser,
           authorizationStatus: 'AUTH',
         },
@@ -94,7 +94,7 @@ describe('Component: ProtectedRoute', () => {
         <PublicPage />
       </ProtectedRoute>,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: null,
           authorizationStatus: 'NO_AUTH',
         },
@@ -120,7 +120,7 @@ describe('Component: ProtectedRoute', () => {
         <PublicPage />
       </ProtectedRoute>,
       makeFakeStore({
-        USER: {
+        User: {
           userInfo: fakeUser,
           authorizationStatus: 'AUTH',
         },

@@ -75,10 +75,10 @@ describe('Component: Map', () => {
     const { withStoreComponent } = withStore(
       <Map city={activeOffer.city} offers={[activeOffer, anotherOffer]} />,
       makeFakeStore({
-        APP: {
+        App: {
           activeOfferId: activeOffer.id,
           currentCity: activeOffer.city,
-          sortOption: makeFakeStore().APP.sortOption,
+          sortOption: makeFakeStore().App.sortOption,
         },
       }),
     );

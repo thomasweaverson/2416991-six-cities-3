@@ -14,7 +14,7 @@ import { clearFavorites } from './slices/favorites/favorites.slice';
 import { createAppAsyncThunk } from './create-app-async-thunk';
 
 export const fetchOffersAction = createAppAsyncThunk<OfferPreview[]>(
-  'data/fetchOffers',
+  'offers/fetchAll',
   async (_arg, { extra }) => {
     const { api } = extra;
     const { data } = await api.get<OfferPreview[]>(APIRoute.Offers);
@@ -23,7 +23,7 @@ export const fetchOffersAction = createAppAsyncThunk<OfferPreview[]>(
 );
 
 export const fetchOfferAction = createAppAsyncThunk<Offer, OfferPreview['id']>(
-  'data/fetchOffer',
+  'offers/fetchSpecified',
   async (id, { extra }) => {
     const { api } = extra;
     const { data } = await api.get<ServerOffer>(`${APIRoute.Offers}/${id}`);
@@ -34,7 +34,7 @@ export const fetchOfferAction = createAppAsyncThunk<Offer, OfferPreview['id']>(
 export const fetchNearOffersAction = createAppAsyncThunk<
   OfferPreview[],
   OfferPreview['id']
->('data/fetchNearOffers', async (id, { extra }) => {
+>('nearby/fetchAll', async (id, { extra }) => {
   const { api } = extra;
   const { data } = await api.get<OfferPreview[]>(
     `${APIRoute.Offers}/${id}${APIRoute.Nearby}`,
@@ -45,14 +45,14 @@ export const fetchNearOffersAction = createAppAsyncThunk<
 export const fetchReviewsAction = createAppAsyncThunk<
   Review[],
   OfferPreview['id']
->('data/fetchReviews', async (id, { extra }) => {
+>('review/fetchAll', async (id, { extra }) => {
   const { api } = extra;
   const { data } = await api.get<Review[]>(`${APIRoute.Comments}/${id}`);
   return data;
 });
 
 export const postReviewAction = createAppAsyncThunk<Review, ReviewServer>(
-  'data/postReview',
+  'review/post',
   async ({ id, comment, rating }, { extra }) => {
     const { api } = extra;
 
@@ -65,7 +65,7 @@ export const postReviewAction = createAppAsyncThunk<Review, ReviewServer>(
 );
 
 export const fetchFavoritesAction = createAppAsyncThunk<OfferPreview[]>(
-  'data/fetchFavorites',
+  'favorites/fetchAll',
   async (_arg, { extra }) => {
     const { api } = extra;
     const { data } = await api.get<OfferPreview[]>(APIRoute.Favorite);
@@ -80,7 +80,7 @@ export const changeFavoriteStatusAction = createAppAsyncThunk<
     status: FavoriteStatus;
   }
 >(
-  'data/changeFavoriteStatus',
+  'favorites/changeStatus',
   async ({ offerId, status }, { extra, getState }) => {
     const { api } = extra;
     const { data } = await api.post<ServerOffer>(
@@ -88,7 +88,7 @@ export const changeFavoriteStatusAction = createAppAsyncThunk<
     );
 
     const state = getState();
-    const existingOffer = state?.OFFERS?.offers?.find(
+    const existingOffer = state?.Offers?.offers?.find(
       (item) => item.id === offerId,
     );
 

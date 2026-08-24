@@ -31,7 +31,7 @@ const ReviewItem = ({ review }: ReviewProps): JSX.Element => (
       <span className="reviews__user-name">{review.user.name}</span>
     </div>
     <div className="reviews__info">
-      <Rating block={Block.REVIEWS} rating={review.rating} />
+      <Rating block={Block.Reviews} rating={review.rating} />
 
       <p className="reviews__text">{review.comment}</p>
       <ReviewDate date={review.date} />

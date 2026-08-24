@@ -24,7 +24,7 @@ const FavoritesItem = ({
     </div>
     <div className="favorites__places">
       {offers.map((offer) => (
-        <OfferCard key={offer.id} block={Block.FAVORITES} offer={offer} />
+        <OfferCard key={offer.id} block={Block.Favorites} offer={offer} />
       ))}
     </div>
   </li>

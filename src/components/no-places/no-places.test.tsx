@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import NoPlaces from './no-places';
 import { withStore } from '../../utils/mock-component';
 import { makeFakeStore, makeFakeCity } from '../../utils/mocks';
+import { DEFAULT_SORT_OPTION } from '../../const/business';
 
 describe('Component: NoPlaces', () => {
   it('should render current city name', () => {
@@ -12,10 +13,10 @@ describe('Component: NoPlaces', () => {
     const { withStoreComponent } = withStore(
       <NoPlaces />,
       makeFakeStore({
-        APP: {
+        App: {
           activeOfferId: null,
           currentCity: city,
-          sortOption: 'Popular',
+          sortOption: DEFAULT_SORT_OPTION,
         },
       }),
     );

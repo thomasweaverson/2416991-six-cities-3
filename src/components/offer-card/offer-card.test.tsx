@@ -116,7 +116,7 @@ describe('Component: OfferCard', () => {
     const { withStoreComponent, mockStore } = withStore(
       <OfferCard
         offer={offer}
-        block={Block.CITIES}
+        block={Block.Cities}
       />,
       makeFakeStore(),
     );
@@ -146,7 +146,7 @@ describe('Component: OfferCard', () => {
     const { withStoreComponent, mockStore } = withStore(
       <OfferCard
         offer={offer}
-        block={Block.CITIES}
+        block={Block.Cities}
       />,
       makeFakeStore(),
     );
@@ -173,7 +173,7 @@ describe('Component: OfferCard', () => {
     const { withStoreComponent, mockStore } = withStore(
       <OfferCard
         offer={offer}
-        block={Block.FAVORITES}
+        block={Block.Favorites}
       />,
       makeFakeStore(),
     );
@@ -216,11 +216,11 @@ describe('Component: OfferCard', () => {
 
     expect(image).toHaveAttribute(
       'width',
-      String(ImageSize.REGULAR.width),
+      String(ImageSize.Regular.width),
     );
     expect(image).toHaveAttribute(
       'height',
-      String(ImageSize.REGULAR.height),
+      String(ImageSize.Regular.height),
     );
   });
 
@@ -230,7 +230,7 @@ describe('Component: OfferCard', () => {
     const { withStoreComponent } = withStore(
       <OfferCard
         offer={offer}
-        block={Block.FAVORITES}
+        block={Block.Favorites}
       />,
       makeFakeStore(),
     );
@@ -245,11 +245,11 @@ describe('Component: OfferCard', () => {
 
     expect(image).toHaveAttribute(
       'width',
-      String(ImageSize.SMALL.width),
+      String(ImageSize.Small.width),
     );
     expect(image).toHaveAttribute(
       'height',
-      String(ImageSize.SMALL.height),
+      String(ImageSize.Small.height),
     );
   });
 });
