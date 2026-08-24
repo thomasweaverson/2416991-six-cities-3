@@ -1,61 +1,41 @@
-import { matchPath, Outlet, useLocation } from 'react-router-dom';
-import { AppRoute } from '../../const/infrastructure';
-import Footer from '../footer/footer';
+import { Outlet } from 'react-router-dom';
+import classNames from 'classnames';
 import Header from '../header/header';
-import {
-  getContainerModifications,
-  getMainElementModifications,
-} from './utils';
-import { useAppSelector } from '../../hooks';
-import { getAuthorizationStatus } from '../../store/slices/user/user.selectors';
-import { getOffers } from '../../store/slices/offers/offers.selectors';
-import { getFavorites } from '../../store/slices/favorites/favorites.selectors';
+import Footer from '../footer/footer';
 
 import styles from './layout.module.css';
-import classNames from 'classnames';
+import { useLayoutState } from '../../hooks/use-layout-state';
 
 const Layout = (): JSX.Element => {
-  const locationPathname = useLocation().pathname;
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
-
-  const offersCount = useAppSelector(getOffers).length;
-  const favoritesCount = useAppSelector(getFavorites).length;
-
-  const isEmpty =
-    (locationPathname === AppRoute.Root && offersCount === 0) ||
-    (locationPathname === AppRoute.Favorites && favoritesCount === 0);
-
-  const isFooterNeeded =
-    !matchPath(AppRoute.Root, locationPathname) &&
-    !matchPath(AppRoute.Login, locationPathname) &&
-    !matchPath(`${AppRoute.Offer}/:id`, locationPathname);
-
-  const containerModifications = getContainerModifications(
-    locationPathname,
-    authorizationStatus,
+  const {
+    isMainPage,
+    isLoginPage,
+    isFavoritesPage,
     isEmpty,
-  );
-
-  const mainElementModifications = getMainElementModifications(
-    locationPathname,
-    isEmpty,
-  );
-
-  const containerClass = classNames(
-    'page',
-    containerModifications,
-    styles.page,
-  );
-  const mainElementClass = classNames(
-    'page__main',
-    mainElementModifications,
-    styles.main,
-  );
+    isFooterNeeded,
+    isUnknownAuth,
+  } = useLayoutState();
 
   return (
-    <div className={containerClass}>
+    <div
+      className={classNames('page', styles.page, {
+        'page--gray': isMainPage || isLoginPage,
+        'page--main': isMainPage,
+        'page--login': isLoginPage,
+        'page--favorites-empty': isFavoritesPage && isEmpty && !isUnknownAuth,
+      })}
+    >
       <Header />
-      <main className={mainElementClass}>
+      <main
+        className={classNames('page__main', styles.main, {
+          'page__main--index': isMainPage,
+          'page__main--index-empty': isMainPage && isEmpty,
+          'page__main--login': isLoginPage,
+          'page__main--favorites': isFavoritesPage,
+          'page__main--favorites-empty': isFavoritesPage && isEmpty,
+          'page__main--offer': !isMainPage && !isLoginPage && !isFavoritesPage && !isFooterNeeded,
+        })}
+      >
         <Outlet />
       </main>
       {isFooterNeeded && <Footer />}
